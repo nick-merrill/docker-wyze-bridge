@@ -9,6 +9,7 @@ from wyzebridge.bridge_utils import env_bool
 from wyzebridge.logging import logger
 
 MTX_CONFIG = env_bool("MTX_CONFIG", "/app/mediamtx.yml", style="original")
+MTX_BIN = env_bool("MTX_BIN", "/app/mediamtx", style="original")
 
 RECORD_LENGTH = env_bool("RECORD_LENGTH", "60s")
 RECORD_KEEP = env_bool("RECORD_KEEP", "0s")
@@ -137,7 +138,7 @@ class MtxServer:
         if self.sub_process:
             return
         logger.info(f"[MTX] starting MediaMTX {getenv('MTX_TAG')}")
-        self.sub_process = Popen(["/app/mediamtx", "/app/mediamtx.yml"])
+        self.sub_process = Popen([MTX_BIN, MTX_CONFIG])
 
     def stop(self):
         if not self.sub_process:

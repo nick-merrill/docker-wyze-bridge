@@ -111,6 +111,7 @@
               export TOKEN_PATH="\$WB_DATA_DIR/tokens"
               export IMG_DIR="\$WB_DATA_DIR/img"
               export MTX_CONFIG="\$WB_DATA_DIR/mediamtx.yml"
+              export MTX_BIN="${mediamtx}/bin/mediamtx"
               export LD_LIBRARY_PATH="$out/app/lib:${pkgs.lib.makeLibraryPath [ pkgs.ffmpeg ]}"
               export PATH="${pkgs.ffmpeg}/bin:${mediamtx}/bin:\$PATH"
 
