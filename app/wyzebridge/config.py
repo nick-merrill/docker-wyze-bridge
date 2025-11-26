@@ -24,8 +24,9 @@ MQTT_TOPIC = env_bool("MQTT_TOPIC", "wyzebridge").strip("/")
 ON_DEMAND: bool = bool(env_bool("on_demand") if getenv("ON_DEMAND") else True)
 CONNECT_TIMEOUT: int = env_bool("CONNECT_TIMEOUT", 20, style="int")
 
-# TODO: change TOKEN_PATH  to /config for all:
-TOKEN_PATH: str = "/config/" if HASS_TOKEN else "/tokens/"
+# TOKEN_PATH: defaults to /config for Home Assistant, /tokens otherwise
+# Can be overridden via TOKEN_PATH environment variable
+TOKEN_PATH: str = f'/{env_bool("TOKEN_PATH", "config" if HASS_TOKEN else "tokens").strip("/")}/'
 IMG_PATH: str = f'/{env_bool("IMG_DIR", "img").strip("/")}/'
 
 SNAPSHOT_TYPE, SNAPSHOT_INT = split_int_str(env_bool("SNAPSHOT"), min=15, default=180)

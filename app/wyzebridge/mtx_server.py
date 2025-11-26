@@ -8,7 +8,7 @@ import yaml
 from wyzebridge.bridge_utils import env_bool
 from wyzebridge.logging import logger
 
-MTX_CONFIG = "/app/mediamtx.yml"
+MTX_CONFIG = env_bool("MTX_CONFIG", "/app/mediamtx.yml", style="original")
 
 RECORD_LENGTH = env_bool("RECORD_LENGTH", "60s")
 RECORD_KEEP = env_bool("RECORD_KEEP", "0s")
