@@ -28,7 +28,9 @@ NET_MODE = {0: "P2P", 1: "RELAY", 2: "LAN"}
 
 
 StreamTuple = namedtuple("stream", ["user", "camera", "options"])
+stream = StreamTuple  # Required for multiprocessing pickling
 QueueTuple = namedtuple("queue", ["cam_resp", "cam_cmd"])
+queue = QueueTuple  # Required for multiprocessing pickling
 
 
 class StreamStatus(IntEnum):
