@@ -112,6 +112,7 @@
               export IMG_DIR="\$WB_DATA_DIR/img"
               export MTX_CONFIG="\$WB_DATA_DIR/mediamtx.yml"
               export MTX_BIN="${mediamtx}/bin/mediamtx"
+              export PYTHONPATH="$out/app:\$PYTHONPATH"
               export LD_LIBRARY_PATH="$out/app/lib:${pkgs.lib.makeLibraryPath [ pkgs.ffmpeg ]}"
               export PATH="${pkgs.ffmpeg}/bin:${mediamtx}/bin:\$PATH"
 
